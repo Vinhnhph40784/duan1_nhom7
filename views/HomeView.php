@@ -131,7 +131,6 @@ section.main section.recently {
                 <div class="slide-all slide2">
                     <!-- layer 1 -->
 
-                    <!-- layer 3 -->
                     <div class="layer-3">
                         <a class="min1" href="index.php?controller=products&action=categories&category_id=3">Shop
                             Now</a>
@@ -145,50 +144,46 @@ section.main section.recently {
 <div class="banner-area">
     <div class="container">
         <div class="section-padding1">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-4">
 
+        </div>
+    </div>
+</div>
+
+<section class="featured-products single-products section-padding-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title">
+                    <h3>SẢN PHẨM TIÊU BIỂU</h3>
+                    <div class="section-icon">
+                        <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="product-tab nav nav-tabs">
+                    <ul>
+                        <li class="active"><a data-toggle="tab" href="#all">Tất cả sản phẩm</a></li>
+                        <?php
+                        $categories = $this->modelGetCategories();
+                        foreach ($categories as $category) {
+                            echo '<li><a data-toggle="tab" href="#' . $category->name . '">' . $category->name . '</a></li>';
+                        }
+                        ?>
+                    </ul>
 
                 </div>
             </div>
         </div>
-    </div>
-
-    <section class="featured-products single-products section-padding-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="section-title">
-                        <h3>SẢN PHẨM TIÊU BIỂU</h3>
-                        <div class="section-icon">
-                            <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="product-tab nav nav-tabs">
-                        <ul>
-                            <li class="active"><a data-toggle="tab" href="#all">Tất cả sản phẩm</a></li>
-                            <?php
-                            $categories = $this->modelGetCategories();
-                            foreach ($categories as $category) {
-                                echo '<li><a data-toggle="tab" href="#' . $category->name . '">' . $category->name . '</a></li>';
-                            }
-                            ?>
-                        </ul>
-
-                    </div>
-                </div>
-            </div>
-            <div class="row tab-content">
-                <div class="tab-pane  fade in active" id="all">
-                    <div id="tab-carousel-1" class="re-owl-carousel owl-carousel product-slider owl-theme">
-                        <?php
-                        $feature_product = $this->modelFeatureProducts();
-                        foreach ($feature_product as $item) {
-                            echo '
+        <div class="row tab-content">
+            <div class="tab-pane  fade in active" id="all">
+                <div id="tab-carousel-1" class="re-owl-carousel owl-carousel product-slider owl-theme">
+                    <?php
+                    $feature_product = $this->modelFeatureProducts();
+                    foreach ($feature_product as $item) {
+                        echo '
                         <div class="col-xs-12">
                             <div class="single-product">
                                 <div class="product-img">
@@ -219,20 +214,20 @@ section.main section.recently {
                             </div>
 
                         </div>';
-                        }
-                        ?>
-                    </div>
+                    }
+                    ?>
                 </div>
-                <!-- Hoodie product end -->
-                <?php
-                $categories = $this->modelGetCategories();
-                foreach ($categories as $category) {
-                    echo '<div class="tab-pane fade in" id="' . $category->name . '">';
-                    echo '<div id="tab-carousel-' . $category->id . '" class="owl-carousel product-slider owl-theme">';
+            </div>
+            <!-- Hoodie product end -->
+            <?php
+            $categories = $this->modelGetCategories();
+            foreach ($categories as $category) {
+                echo '<div class="tab-pane fade in" id="' . $category->name . '">';
+                echo '<div id="tab-carousel-' . $category->id . '" class="owl-carousel product-slider owl-theme">';
 
-                    $category_products = $this->modelGetProducts($category->id);
-                    foreach ($category_products as $product) { // Sửa biến $item thành $product
-                        echo '<div class="col-xs-12">
+                $category_products = $this->modelGetProducts($category->id);
+                foreach ($category_products as $product) { // Sửa biến $item thành $product
+                    echo '<div class="col-xs-12">
                         <div class="single-product">
                             <div class="product-img">
                                 <div class="pro-type">
@@ -262,46 +257,46 @@ section.main section.recently {
                         </div>
 
                     </div>';
-                    }
-
-                    echo '</div></div>';
                 }
-                ?>
 
-            </div>
-        </div>
-    </section>
+                echo '</div></div>';
+            }
+            ?>
 
-    <div id="banner2">
-
-        <div class="box-left">
-            <h2>
-                <span>SUMMER</span>
-            </h2>
-            <a href="thucdon_2.php?id_sanpham=2">
-                <button>Mua ngay </button>
-            </a>
         </div>
     </div>
+</section>
 
-    <section class="new-products single-products section-padding-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="section-title">
-                        <h3>SẢN PHẨM HOT</h3>
-                        <div class="section-icon">
-                            <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                        </div>
+<div id="banner2">
+
+    <div class="box-left">
+        <h2>
+            <span>SUMMER</span>
+        </h2>
+        <a href="thucdon_2.php?id_sanpham=2">
+            <button>Mua ngay </button>
+        </a>
+    </div>
+</div>
+
+<section class="new-products single-products section-padding-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title">
+                    <h3>SẢN PHẨM HOT</h3>
+                    <div class="section-icon">
+                        <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div id="new-products" class="owl-carousel product-slider owl-theme">
-                    <?php
-                    $productList = $this->modelHotProducts();
-                    foreach ($productList as $item) {
-                        echo '
+        </div>
+        <div class="row">
+            <div id="new-products" class="owl-carousel product-slider owl-theme">
+                <?php
+                $productList = $this->modelHotProducts();
+                foreach ($productList as $item) {
+                    echo '
                             <div class="col-xs-12">
                                 <div class="single-product">
                                     <div class="product-img">
@@ -331,23 +326,23 @@ section.main section.recently {
                                     </div>
                                 </div>
                             </div>';
-                    }
-                    ?>
-                </div>
+                }
+                ?>
             </div>
         </div>
-    </section>
-
-    <div id="banner3">
-
-        <div class="box-left">
-            <a href="thucdon_2.php?id_sanpham=3">
-                <button>Mua ngay </button>
-            </a>
-        </div>
     </div>
+</section>
+
+<div id="banner3">
+
+    <div class="box-left">
+        <a href="thucdon_2.php?id_sanpham=3">
+            <button>Mua ngay </button>
+        </a>
+    </div>
+</div>
 
 
-    <!--------------------BANNER SALE--------------------------- -->
+<!--------------------BANNER SALE--------------------------- -->
 
-    </section>
+</section>

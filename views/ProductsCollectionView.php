@@ -5,7 +5,7 @@
             <div class="col-md-12 text-center">
                 <div class="con-text">
                     <h2 class="page-title">Bộ Sưu Tập</h2>
-                    <p><a href="#">Home</a></p>
+                    <p><a href="#">Home</a> | Thương hiệu</p>
                 </div>
             </div>
         </div>
@@ -15,12 +15,17 @@
 
     <section class="main">
         <section class="recently">
-
+            <div class="title">
+                <?php
+                    $collections = $this->modelGetCollections(isset($_GET['id_sanpham'])? $_GET['id_sanpham'] : 0);
+                    echo '<h1>' . $collections->name . '</h1>';
+                ?>
+            </div>
             <div class="product-recently">
                 <div class="row">
                     <?php
-                    foreach ($data as $item) {
-                        echo '
+                        foreach ($data as $item) {
+                            echo '
                                 <div class="col">
                                     <a href="single_product.php?id=' . $item->id . '">
                                         <img class="thumbnail" src="assets/images/' . $item->thumbnail . '" alt="">
@@ -43,10 +48,11 @@
                                     </a>
                                 </div>
                                 ';
-                    }
-                    ?>
+                        }
+                        ?>
                 </div>
             </div>
         </section>
     </section>
 </div>
+

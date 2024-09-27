@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thêm Sản Phẩm</title>
     <style>
-        @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
-        /* Bootstrap Icons */
-        @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+    @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+    /* Bootstrap Icons */
+    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
     </style>
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
@@ -45,7 +45,7 @@
                 <!-- Brand -->
                 <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
                     <h3 class="text-success"><img src="../assets/images/logo.jpg" width="40"><span
-                            class="text-info">Admin</span></h3>
+                            class="text-info">POLOBEE</span>STORE</h3>
                 </a>
 
                 <!-- Divider -->
@@ -66,7 +66,6 @@
                             </a>
                         </li>
                         <!-- Divider -->
-
 
 
                         <hr class="navbar-divider my-3 opacity-20">
@@ -110,7 +109,7 @@
                             <div class="col-sm-6 col-12 mb-4 mb-sm-0">
                                 <!-- Title -->
                                 <h1 class="h2 mb-0 ls-tight">
-                                    <img src="../assets/images/logo.jpg" width="60"> Shop
+                                    <img src="../assets/images/logo.jpg" width="60"> POLOBEE Store
                                 </h1>
                             </div>
 
@@ -287,7 +286,33 @@
                                             <img src="<?= $thumbnail_2 ?>" style="max-width: 200px"
                                                 id="img_thumbnail_2">
                                         </div>
-
+                                        <div class="form-group">
+                                            <!-- <label for="exampleFormControlFile1">Thumbnail:<label> -->
+                                            <label for="name">Thumbnail:</label>
+                                            <input type="file" class="form-control-file" id="exampleFormControlFile1"
+                                                id="thumbnail_3" name="thumbnail_3"
+                                                value="<?php echo isset($record->thumbnail_3) ? $record->thumbnail_3 : ""; ?>">
+                                            <img src="<?= $thumbnail_3 ?>" style="max-width: 200px"
+                                                id="img_thumbnail_3">
+                                        </div>
+                                        <div class="form-group">
+                                            <!-- <label for="exampleFormControlFile1">Thumbnail:<label> -->
+                                            <label for="name">Thumbnail:</label>
+                                            <input type="file" class="form-control-file" id="exampleFormControlFile1"
+                                                id="thumbnail_4" name="thumbnail_4"
+                                                value="<?php echo isset($record->thumbnail_4) ? $record->thumbnail_4 : ""; ?>">
+                                            <img src="<?= $thumbnail_4 ?>" style="max-width: 200px"
+                                                id="img_thumbnail_4">
+                                        </div>
+                                        <div class="form-group">
+                                            <!-- <label for="exampleFormControlFile1">Thumbnail:<label> -->
+                                            <label for="name">Thumbnail:</label>
+                                            <input type="file" class="form-control-file" id="exampleFormControlFile1"
+                                                id="thumbnail_5" name="thumbnail_5"
+                                                value="<?php echo isset($record->thumbnail_5) ? $record->thumbnail_5 : ""; ?>">
+                                            <img src="<?= $thumbnail_5 ?>" style="max-width: 200px"
+                                                id="img_thumbnail_5">
+                                        </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlTextarea1">Nội dung</label>
                                             <textarea class="form-control" id="content" rows="3"
@@ -313,22 +338,22 @@
         </div>
     </div>
     <script type="text/javascript">
-        function updateThumbnail() {
-            $('#img_thumbnail').attr('src', $('#thumbnail').val())
-        }
-        $(function() {
-            //doi website load noi dung => xu ly phan js
-            $('#content').summernote({
-                height: 200
-            });
-        })
+    function updateThumbnail() {
+        $('#img_thumbnail').attr('src', $('#thumbnail').val())
+    }
+    $(function() {
+        //doi website load noi dung => xu ly phan js
+        $('#content').summernote({
+            height: 200
+        });
+    })
 
-        function addProduct() {
-            var option = confirm('Thêm thành công')
-            if (!option) {
-                return;
-            }
+    function addProduct() {
+        var option = confirm('Thêm thành công')
+        if (!option) {
+            return;
         }
+    }
     </script>
 
 </body>

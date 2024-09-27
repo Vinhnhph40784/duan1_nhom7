@@ -40,7 +40,7 @@
                 <!-- Brand -->
                 <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
                     <h3 class="text-success"><img src="../assets/images/logo.jpg" width="40"><span
-                            class="text-info">Admin</span></h3>
+                            class="text-info">POLOBEE</span>STORE</h3>
                 </a>
                 <!-- User menu (mobile) -->
                 <div class="navbar-user d-lg-none">
@@ -84,7 +84,7 @@
                             </a>
                         </li>
                         <!-- Divider -->
-                        <hr class="navbar-divider my-3 opacity-20">
+
 
                         <hr class="navbar-divider my-3 opacity-20">
                         <li class="nav-item">
@@ -92,7 +92,6 @@
                                 <i class="bi bi-bag-heart"></i>Quản Lý Danh Mục
                             </a>
                         </li>
-                        <hr class="navbar-divider my-3 opacity-20">
 
                     </ul>
                     <!-- Divider -->
@@ -127,7 +126,7 @@
                             <div class="col-sm-6 col-12 mb-4 mb-sm-0">
                                 <!-- Title -->
                                 <h1 class="h2 mb-0 ls-tight">
-                                    <img src="../assets/images/logo.jpg" width="60"> Shop
+                                    <img src="../assets/images/logo.jpg" width="60"> POLOBEE Store
                                 </h1>
                             </div>
                             <!-- Actions -->

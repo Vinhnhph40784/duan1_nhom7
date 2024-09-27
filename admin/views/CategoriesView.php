@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Shop</title>
+    <title>Dashboard POLOBEE Store</title>
     <style>
-        @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
-        /* Bootstrap Icons */
-        @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+    @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+    /* Bootstrap Icons */
+    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
     </style>
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
@@ -40,7 +40,7 @@
                 <!-- Brand -->
                 <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
                     <h3 class="text-success"><img src="../assets/images/logo.jpg" width="40"><span
-                            class="text-info">Admin</span></h3>
+                            class="text-info">POLOBEE</span>STORE</h3>
                 </a>
 
                 <!-- Divider -->
@@ -61,14 +61,14 @@
                             </a>
                         </li>
                         <!-- Divider -->
-
                         <hr class="navbar-divider my-3 opacity-20">
+
+
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?controller=categories">
                                 <i class="bi bi-bag-heart"></i>Quản Lý Danh Mục
                             </a>
                         </li>
-                        <hr class="navbar-divider my-3 opacity-20">
 
                     </ul>
                     <!-- Divider -->
@@ -103,7 +103,7 @@
                             <div class="col-sm-6 col-12 mb-4 mb-sm-0">
                                 <!-- Title -->
                                 <h1 class="h2 mb-0 ls-tight">
-                                    <img src="../assets/images/logo.jpg" width="60"> Shop
+                                    <img src="../assets/images/logo.jpg" width="60"> POLOBEE Store
                                 </h1>
                             </div>
                             <!-- Actions -->
@@ -244,8 +244,8 @@
                                             </a>
                                         </td>
                                     </tr>
-                                <?php endforeach; ?>
-                                </tr>
+                                    <?php endforeach; ?>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -275,19 +275,19 @@
         </div>
     </div>
     <script type="text/javascript">
-        function deleteCategory(id) {
-            var option = confirm('Bạn có chắc chắn muốn xoá danh mục này không?')
-            if (!option) {
-                return;
-            }
-            console.log(id)
-            $.post('ajax.php', {
-                'id': id,
-                'action': 'delete'
-            }, function(data) {
-                location.reload()
-            })
+    function deleteCategory(id) {
+        var option = confirm('Bạn có chắc chắn muốn xoá danh mục này không?')
+        if (!option) {
+            return;
         }
+        console.log(id)
+        $.post('ajax.php', {
+            'id': id,
+            'action': 'delete'
+        }, function(data) {
+            location.reload()
+        })
+    }
     </script>
 
 </body>
