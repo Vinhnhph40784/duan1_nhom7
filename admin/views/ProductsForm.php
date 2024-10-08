@@ -45,7 +45,7 @@
                 <!-- Brand -->
                 <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
                     <h3 class="text-success"><img src="../assets/images/logo.jpg" width="40"><span
-                            class="text-info">POLOBEE</span>STORE</h3>
+                            class="text-info">SHOP BEE</span>STORE</h3>
                 </a>
 
                 <!-- Divider -->
@@ -65,7 +65,12 @@
                                 <i class="bi bi-bag-heart"></i>Quản Lý Sản Phẩm
                             </a>
                         </li>
-                        <!-- Divider -->
+                        <hr class="navbar-divider my-3 opacity-20">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?controller=orders">
+                                <i class="bi bi-cash-stack"></i>Quản Lý Đơn Hàng
+                            </a>
+                        </li>
 
 
                         <hr class="navbar-divider my-3 opacity-20">
@@ -109,7 +114,7 @@
                             <div class="col-sm-6 col-12 mb-4 mb-sm-0">
                                 <!-- Title -->
                                 <h1 class="h2 mb-0 ls-tight">
-                                    <img src="../assets/images/logo.jpg" width="60"> POLOBEE Store
+                                    <img src="../assets/images/logo.jpg" width="60"> SHOP BEE Store
                                 </h1>
                             </div>
 
@@ -130,7 +135,11 @@
                                         <div class="col">
                                             <span class="h6 font-semibold text-muted text-sm d-block mb-2">Sản
                                                 Phẩm</span>
-
+                                            <span class="h3 font-bold mb-0">
+                                                <?php
+                                                echo '<span>' . $this->modelTotal() . '</span>';
+                                                ?>
+                                            </span>
 
                                         </div>
                                         <div class="col-auto">
@@ -150,7 +159,12 @@
                                         <div class="col">
                                             <span class="h6 font-semibold text-muted text-sm d-block mb-2">Khách
                                                 Hàng</span>
-
+                                            <span class="h3 font-bold mb-0">
+                                                <?php
+                                                $user = $this->modelFeatureUser();
+                                                echo '<span>' . count($user) . '</span>';
+                                                ?>
+                                            </span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -169,7 +183,12 @@
                                         <div class="col">
                                             <span class="h6 font-semibold text-muted text-sm d-block mb-2">Đơn
                                                 Hàng</span>
-
+                                            <span class="h3 font-bold mb-0">
+                                                <?php
+                                                $order = $this->modelFeatureOrderDetail();
+                                                echo '<span>' . count($order) . '</span>';
+                                                ?>
+                                            </span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -188,7 +207,12 @@
                                         <div class="col">
                                             <span class="h6 font-semibold text-muted text-sm d-block mb-2">Danh
                                                 Mục</span>
-
+                                            <span class="h3 font-bold mb-0">
+                                                <?php
+                                                $category = $this->modelGetCategories();
+                                                echo '<span>' . count($category) . '</span>';
+                                                ?>
+                                            </span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">

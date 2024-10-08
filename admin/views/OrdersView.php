@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản Lý Sản Phẩm</title>
+    <title>Dashboard POLOBEE Store</title>
     <style>
     @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
     /* Bootstrap Icons */
@@ -42,7 +42,30 @@
                     <h3 class="text-success"><img src="../assets/images/logo.jpg" width="40"><span
                             class="text-info">SHOP BEE</span>STORE</h3>
                 </a>
-
+                <!-- User menu (mobile) -->
+                <div class="navbar-user d-lg-none">
+                    <!-- Dropdown -->
+                    <div class="dropdown">
+                        <!-- Toggle -->
+                        <a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <div class="avatar-parent-child">
+                                <img alt="Image Placeholder"
+                                    src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                                    class="avatar avatar- rounded-circle">
+                                <span class="avatar-child avatar-badge bg-success"></span>
+                            </div>
+                        </a>
+                        <!-- Menu -->
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
+                            <a href="#" class="dropdown-item">Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="#" class="dropdown-item">Billing</a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">Logout</a>
+                        </div>
+                    </div>
+                </div>
                 <!-- Divider -->
                 <hr class="navbar-divider my-18 opacity-20">
                 <!-- Collapse -->
@@ -60,20 +83,21 @@
                                 <i class="bi bi-bag-heart"></i>Quản Lý Sản Phẩm
                             </a>
                         </li>
+                        <!-- Divider -->
+
                         <hr class="navbar-divider my-3 opacity-20">
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?controller=orders">
                                 <i class="bi bi-cash-stack"></i>Quản Lý Đơn Hàng
                             </a>
                         </li>
-
                         <hr class="navbar-divider my-3 opacity-20">
+
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?controller=categories">
                                 <i class="bi bi-bag-heart"></i>Quản Lý Danh Mục
                             </a>
                         </li>
-
 
                     </ul>
                     <!-- Divider -->
@@ -129,12 +153,13 @@
                                         <div class="col">
                                             <span class="h6 font-semibold text-muted text-sm d-block mb-2">Sản
                                                 Phẩm</span>
+
                                             <span class="h3 font-bold mb-0">
                                                 <?php
-                                                echo '<span>' . $this->modelTotal() . '</span>';
+                                                $product = $this->modelFeatureProducts();
+                                                echo '<span>' . count($product) . '</span>';
                                                 ?>
                                             </span>
-
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
@@ -221,27 +246,19 @@
                     </div>
                     <div class="card shadow border-0 mb-7">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Danh Sách Sản Phẩm</h5>
-                            <a href="index.php?controller=products&action=create"
-                                class="btn d-inline-flex btn-sm btn-primary mx-1">
-                                <span class=" pe-2">
-                                    <i class="bi bi-plus"></i>
-                                </span>
-                                <span>Thêm Sản Phẩm</span>
-                            </a>
+                            <h5 class="mb-0">Quản Lý Đơn Hàng</h5>
+
                         </div>
                         <div class="table-responsive">
                             <table class="table table-hover table-nowrap">
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">Số Thứ Tự</th>
-                                        <th scope="col">Ảnh Sản Phẩm</th>
-                                        <th scope="col">Tên Sản Phẩm</th>
-                                        <th scope="col">Danh Mục</th>
-                                        <th scope="col">Thương Hiệu</th>
-                                        <th scope="col">Số Lượng</th>
-                                        <th scope="col">Giá Sản Phẩm</th>
-                                        <th scope="col">Mô tả Sản Phẩm</th>
+                                        <th scope="col">Tên Khách Hàng</th>
+                                        <th scope="col">Số Điện Thoại</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Địa Chỉ</th>
+                                        <th scope="col">Trạng Thái</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -250,44 +267,27 @@
                                 <tbody>
                                     <tr>
                                         <?php
-                                        // Lấy danh sách Sản Phẩm
                                         $pg = 1;
                                         if (isset($_GET['page'])) {
                                             $pg = $_GET['page'];
                                         }
                                         echo 'Bạn đang ở trang: ' . $pg;
-
-                                        foreach ($data as $key => $item) : ?>
+                                        foreach ($listRecord as $key => $item): ?>
                                     <tr>
-                                        <td><?= ++$key ?></td>
-                                        <td style="text-align:center">
-                                            <img src="../assets/images/<?= $item->thumbnail ?>" alt=""
-                                                class="avatar avatar-sm rounded-circle me-2">
-                                        </td>
-                                        <td class="text-heading font-semibold"><?= $item->title ?></td>
-                                        <td class="text-heading font-semibold"><?= $item->category_name ?></td>
-                                        <td class="text-heading font-semibold"><?= $item->collection_name ?></td>
-                                        <td><?= $item->number ?></td>
-                                        <td><?= number_format($item->price, 0, ',', '.') ?> VNĐ</td>
-
-                                        <td style="max-width: 150px;
-                                                overflow: hidden;
-                                                text-overflow: ellipsis;
-                                                white-space: nowrap;"> <?= $item->content ?></td>
-
+                                        <td> <?= ++$key ?></td>
+                                        <td class="text-heading font-semibold"><?= $item->fullname ?></td>
+                                        <td class="text-heading font-semibold"><?= $item->phone_number ?></td>
+                                        <td class="text-heading font-semibold"><?= $item->email ?></td>
+                                        <td class="text-heading font-semibold"><?= $item->address  ?></td>
+                                        <td class="text-heading font-semibold"><?= $item->status  ?></td>
                                         <td>
                                             <a
-                                                href="index.php?controller=products&action=update&id=<?php echo $item->id; ?>">
-                                                <button class=" btn btn-warning">Sửa</button>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="index.php?controller=products&action=delete&id=<?php echo $item->id; ?>"
-                                                onclick="return window.confirm('Bạn có chắc chắn muốn xoá sản phẩm này không?');">
-                                                <button class="btn btn-danger">Xoá</button>
+                                                href="index.php?controller=orders&action=update&id=<?php echo $item->id; ?>">
+                                                <button class=" btn btn-success">Sửa</button>
                                             </a>
                                         </td>
                                     </tr>
+
                                     <?php endforeach; ?>
 
                                     </tr>
@@ -295,6 +295,7 @@
                                 </tbody>
                             </table>
                         </div>
+
                         <div class="card-footer border-0 py-5">
 
                             <nav aria-label="Page navigation example">
@@ -305,10 +306,10 @@
                                         // ngược lại hiển thị thẻ a
                                         if ($i == $numPage) {
                                             echo '
-                            <li class="page-item"><a class="page-link" href="index.php?controller=products&page=' . $i . '">' . $i . '</a></li>';
+                            <li class="page-item"><a class="page-link" href="index.php?controller=orders&page=' . $i . '">' . $i . '</a></li>';
                                         } else {
                                             echo '
-                            <li class="page-item"><a class="page-link" href="index.php?controller=products&page=' . $i . '">' . $i . '</a></li>
+                            <li class="page-item"><a class="page-link" href="index.php?controller=orders&page=' . $i . '">' . $i . '</a></li>
                                     ';
                                         }
                                     }

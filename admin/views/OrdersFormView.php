@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản Lý Sản Phẩm</title>
+    <title>Cập nhật đơn hàng</title>
     <style>
     @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
     /* Bootstrap Icons */
@@ -16,7 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <!-- Latest compiled JavaScrseipt -->
+    <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
@@ -60,20 +60,21 @@
                                 <i class="bi bi-bag-heart"></i>Quản Lý Sản Phẩm
                             </a>
                         </li>
+                        <!-- Divider -->
+                        <hr class="navbar-divider my-3 opacity-20">
+
                         <hr class="navbar-divider my-3 opacity-20">
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?controller=orders">
                                 <i class="bi bi-cash-stack"></i>Quản Lý Đơn Hàng
                             </a>
                         </li>
-
                         <hr class="navbar-divider my-3 opacity-20">
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?controller=categories">
                                 <i class="bi bi-bag-heart"></i>Quản Lý Danh Mục
                             </a>
                         </li>
-
 
                     </ul>
                     <!-- Divider -->
@@ -129,12 +130,13 @@
                                         <div class="col">
                                             <span class="h6 font-semibold text-muted text-sm d-block mb-2">Sản
                                                 Phẩm</span>
+
                                             <span class="h3 font-bold mb-0">
                                                 <?php
-                                                echo '<span>' . $this->modelTotal() . '</span>';
+                                                $product = $this->modelFeatureProducts();
+                                                echo '<span>' . count($product) . '</span>';
                                                 ?>
                                             </span>
-
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
@@ -221,100 +223,143 @@
                     </div>
                     <div class="card shadow border-0 mb-7">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Danh Sách Sản Phẩm</h5>
-                            <a href="index.php?controller=products&action=create"
-                                class="btn d-inline-flex btn-sm btn-primary mx-1">
-                                <span class=" pe-2">
-                                    <i class="bi bi-plus"></i>
-                                </span>
-                                <span>Thêm Sản Phẩm</span>
-                            </a>
+                            <h2 class="mb-0">Chi tiết đơn hàng</h2>
+                        </div>
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">1.Thông tin đơn hàng</h5>
                         </div>
                         <div class="table-responsive">
-                            <table class="table table-hover table-nowrap">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col">Số Thứ Tự</th>
-                                        <th scope="col">Ảnh Sản Phẩm</th>
-                                        <th scope="col">Tên Sản Phẩm</th>
-                                        <th scope="col">Danh Mục</th>
-                                        <th scope="col">Thương Hiệu</th>
-                                        <th scope="col">Số Lượng</th>
-                                        <th scope="col">Giá Sản Phẩm</th>
-                                        <th scope="col">Mô tả Sản Phẩm</th>
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
+                            <form action="<?= $action ?>" method="POST">
+                                <!-- Section 1: Order Status and Customer Information -->
+                                <?php
+                                $groupedRecords = [];
 
-                                <tbody>
-                                    <tr>
-                                        <?php
-                                        // Lấy danh sách Sản Phẩm
-                                        $pg = 1;
-                                        if (isset($_GET['page'])) {
-                                            $pg = $_GET['page'];
-                                        }
-                                        echo 'Bạn đang ở trang: ' . $pg;
-
-                                        foreach ($data as $key => $item) : ?>
-                                    <tr>
-                                        <td><?= ++$key ?></td>
-                                        <td style="text-align:center">
-                                            <img src="../assets/images/<?= $item->thumbnail ?>" alt=""
-                                                class="avatar avatar-sm rounded-circle me-2">
-                                        </td>
-                                        <td class="text-heading font-semibold"><?= $item->title ?></td>
-                                        <td class="text-heading font-semibold"><?= $item->category_name ?></td>
-                                        <td class="text-heading font-semibold"><?= $item->collection_name ?></td>
-                                        <td><?= $item->number ?></td>
-                                        <td><?= number_format($item->price, 0, ',', '.') ?> VNĐ</td>
-
-                                        <td style="max-width: 150px;
-                                                overflow: hidden;
-                                                text-overflow: ellipsis;
-                                                white-space: nowrap;"> <?= $item->content ?></td>
-
-                                        <td>
-                                            <a
-                                                href="index.php?controller=products&action=update&id=<?php echo $item->id; ?>">
-                                                <button class=" btn btn-warning">Sửa</button>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="index.php?controller=products&action=delete&id=<?php echo $item->id; ?>"
-                                                onclick="return window.confirm('Bạn có chắc chắn muốn xoá sản phẩm này không?');">
-                                                <button class="btn btn-danger">Xoá</button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <?php endforeach; ?>
-
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="card-footer border-0 py-5">
-
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <?php
-                                    for ($i = 1; $i <= $numPage; $i++) {
-                                        // Nếu là trang hiện tại thì hiển thị thẻ span
-                                        // ngược lại hiển thị thẻ a
-                                        if ($i == $numPage) {
-                                            echo '
-                            <li class="page-item"><a class="page-link" href="index.php?controller=products&page=' . $i . '">' . $i . '</a></li>';
-                                        } else {
-                                            echo '
-                            <li class="page-item"><a class="page-link" href="index.php?controller=products&page=' . $i . '">' . $i . '</a></li>
-                                    ';
-                                        }
+                                // Group records by customer
+                                foreach ($record as $item) {
+                                    if (!isset($groupedRecords[$item->phone_number])) {
+                                        $groupedRecords[$item->phone_number] = [
+                                            'fullname' => $item->fullname,
+                                            'phone_number' => $item->phone_number,
+                                            'address' => $item->address,
+                                            'orders' => [],
+                                            'status' => $item->status // Assuming status is the same for all orders of a customer
+                                        ];
                                     }
-                                    ?>
-                                </ul>
-                            </nav>
+                                    $groupedRecords[$item->phone_number]['orders'][] = $item->order_id;
+                                }
+                                ?>
+
+                                <table class="table table-hover table-nowrap">
+                                    <tbody>
+                                        <?php foreach ($groupedRecords as $customer) { ?>
+                                        <tr>
+                                            <td class="text-heading font-semibold">Tên Khách Hàng</td>
+                                            <td><?php echo htmlspecialchars($customer['fullname']); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-heading font-semibold">Số Điện Thoại</td>
+                                            <td><?php echo htmlspecialchars($customer['phone_number']); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-heading font-semibold">Địa Chỉ</td>
+                                            <td><?php echo htmlspecialchars($customer['address']); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-heading font-semibold">Trạng Thái</td>
+                                            <td>
+                                                <select class="form-control" name="status" id="status"
+                                                    onchange="updateStatus([<?php echo implode(',', $customer['orders']); ?>])">
+                                                    <?php if ($customer['status'] == 'Đang chờ xác nhận') { ?>
+                                                    <option value="Đang chờ xác nhận"
+                                                        <?php echo $customer['status'] == 'Đang chờ xác nhận' ? 'selected' : ''; ?>>
+                                                        Đang chờ xác nhận</option>
+                                                    <option value="Đã xác nhận">Đã xác nhận</option>
+                                                    <option value="Đã hủy">Đã hủy</option>
+                                                    <?php } elseif ($customer['status'] == 'Đã xác nhận') { ?>
+                                                    <option value="Đã xác nhận"
+                                                        <?php echo $customer['status'] == 'Đã xác nhận' ? 'selected' : ''; ?>>
+                                                        Đã xác nhận</option>
+                                                    <option value="Đang giao">Đang giao</option>
+                                                    <?php } elseif ($customer['status'] == 'Đang giao') { ?>
+                                                    <option value="Đang giao"
+                                                        <?php echo $customer['status'] == 'Đang giao' ? 'selected' : ''; ?>>
+                                                        Đang giao</option>
+                                                    <option value="Giao hàng thành công">Giao hàng thành công</option>
+                                                    <option value="Giao hàng thất bại">Giao hàng thất bại</option>
+                                                    <?php } elseif ($customer['status'] == 'Đã hủy') { ?>
+                                                    <option value="Đã hủy" selected disabled>Đã hủy</option>
+                                                    <?php } elseif ($customer['status'] == 'Giao hàng thành công') { ?>
+                                                    <option value="Giao hàng thành công" selected disabled>Giao hàng
+                                                        thành công</option>
+                                                    <?php } elseif ($customer['status'] == 'Giao hàng thất bại') { ?>
+                                                    <option value="Giao hàng thất bại" selected disabled>Giao hàng thất
+                                                        bại</option>
+                                                    <?php } ?>
+                                                </select>
+                                            </td>
+                                        </tr>
+
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+
+                                <script>
+                                function updateStatus(orderIds) {
+                                    // JavaScript function to update the status of all orders of a customer
+                                    // You can implement the AJAX request to send the status update to your server here
+                                }
+                                </script>
+                                <br>
+                                <br>
+
+
+
+                                <!-- Section 2: Product Details -->
+
+                                <table class="table table-hover table-nowrap">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">2.Thông tin sản phẩm</h5>
+                                    </div>
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Số Thứ Tự</th>
+                                            <th scope="col">Tên Sản Phẩm</th>
+                                            <th scope="col">Đơn Giá</th>
+                                            <th scope="col">Số Lượng</th>
+                                            <th scope="col">Thành Tiền</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($record as $index => $item) { ?>
+                                        <tr>
+                                            <td class="text-heading font-semibold"><?= ++$index ?></td>
+                                            <td class="text-heading font-semibold"><?= $item->title ?></td>
+                                            <td class="text-heading font-semibold">
+                                                <?= number_format($item->price, 0, ',', '.') ?> VNĐ</td>
+                                            <td class="text-heading font-semibold"><?= $item->num ?></td>
+                                            <td class="text-heading font-semibold">
+                                                <?= number_format($item->price * $item->num, 0, ',', '.') ?> VNĐ</td>
+                                        </tr>
+                                        <?php } ?>
+                                        <!-- Calculate Total Amount -->
+                                        <tr>
+                                            <td colspan="4" class="text-end font-semibold">Tổng Tiền</td>
+                                            <td class="text-heading font-semibold">
+                                                <?php
+                                                $total = 0;
+                                                foreach ($record as $item) {
+                                                    $total += $item->price * $item->num;
+                                                }
+                                                echo number_format($total, 0, ',', '.') . ' VNĐ';
+                                                ?>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <a href="index.php?controller=orders" class="btn btn-warning">Back</a>
+                                <button type="submit" class="btn btn-success">Lưu</button>
+
+                            </form>
                         </div>
                     </div>
                 </div>

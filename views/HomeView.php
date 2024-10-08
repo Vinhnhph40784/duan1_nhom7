@@ -112,8 +112,8 @@ section.main section.recently {
     <div class="main-slider an-si">
         <div class="bend niceties preview-2 hm-ver-1">
             <div id="ensign-nivoslider-2" class="slides">
-                <img src="assets/images/banner_6.jpg" alt="" title="#slider-direction-3" />
-                <img src="assets/images/banner_7.jpg" alt="" title="#slider-direction-1" />
+                <img src="assets/images/banner_2.jpg" alt="" title="#slider-direction-3" />
+                <img src="assets/images/banner_1.jpg" alt="" title="#slider-direction-1" />
             </div>
             <!-- direction 1 -->
             <div id="slider-direction-3" class="t-cn slider-direction Builder">
