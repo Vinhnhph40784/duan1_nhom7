@@ -54,7 +54,12 @@
                                 <i class="bi bi-bag-heart"></i>Quản Lý Sản Phẩm
                             </a>
                         </li>
-                        <!-- Divider -->
+                        <hr class="navbar-divider my-3 opacity-20">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?controller=orders">
+                                <i class="bi bi-cash-stack"></i>Quản Lý Đơn Hàng
+                            </a>
+                        </li>
 
 
                         <hr class="navbar-divider my-3 opacity-20">
