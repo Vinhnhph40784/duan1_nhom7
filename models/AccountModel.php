@@ -26,8 +26,6 @@ trait AccountModel
 				"var_dienthoai" => $dienthoai,
 				"var_role" => $role
 			));
-
-
 			if ($fullname != "" && $tendangnhap != "" && $email != "" && $diachi != "" && $dienthoai != "" && $matkhau != "") {
 				echo '<script>alert("Đăng ký thành công.");
                 	window.location.href="index.php?controller=account&action=login";

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sửa Danh Mục Sản Phẩm</title>
+    <title>Dashboard POLOBEE Store</title>
     <style>
         @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
         /* Bootstrap Icons */
@@ -20,7 +20,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="../script.js"></script>
 </head>
 
@@ -83,15 +83,16 @@
                                 <i class="bi bi-bag-heart"></i>Quản Lý Sản Phẩm
                             </a>
                         </li>
+                        <!-- Divider -->
+
                         <hr class="navbar-divider my-3 opacity-20">
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?controller=orders">
                                 <i class="bi bi-cash-stack"></i>Quản Lý Đơn Hàng
                             </a>
                         </li>
-
-
                         <hr class="navbar-divider my-3 opacity-20">
+
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?controller=categories">
                                 <i class="bi bi-bag-heart"></i>Quản Lý Danh Mục
@@ -134,7 +135,6 @@
                                     <img src="../assets/images/logo.jpg" width="60"> POLOBEE Store
                                 </h1>
                             </div>
-                            <!-- Actions -->
 
                         </div>
 
@@ -154,7 +154,12 @@
                                             <span class="h6 font-semibold text-muted text-sm d-block mb-2">Sản
                                                 Phẩm</span>
 
-
+                                            <span class="h3 font-bold mb-0">
+                                                <?php
+                                                $product = $this->modelFeatureProducts();
+                                                echo '<span>' . count($product) . '</span>';
+                                                ?>
+                                            </span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
@@ -173,7 +178,12 @@
                                         <div class="col">
                                             <span class="h6 font-semibold text-muted text-sm d-block mb-2">Khách
                                                 Hàng</span>
-
+                                            <span class="h3 font-bold mb-0">
+                                                <?php
+                                                $user = $this->modelFeatureUser();
+                                                echo '<span>' . count($user) . '</span>';
+                                                ?>
+                                            </span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -192,7 +202,12 @@
                                         <div class="col">
                                             <span class="h6 font-semibold text-muted text-sm d-block mb-2">Đơn
                                                 Hàng</span>
-
+                                            <span class="h3 font-bold mb-0">
+                                                <?php
+                                                $order = $this->modelFeatureOrderDetail();
+                                                echo '<span>' . count($order) . '</span>';
+                                                ?>
+                                            </span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -211,7 +226,12 @@
                                         <div class="col">
                                             <span class="h6 font-semibold text-muted text-sm d-block mb-2">Danh
                                                 Mục</span>
-
+                                            <span class="h3 font-bold mb-0">
+                                                <?php
+                                                $category = $this->modelGetCategories();
+                                                echo '<span>' . count($category) . '</span>';
+                                                ?>
+                                            </span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
@@ -225,46 +245,83 @@
                         </div>
                     </div>
                     <div class="card shadow border-0 mb-7">
-                        <div class="card-header">
-                            <h5 class="mb-0">Danh Mục Sản Phẩm</h5>
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Quản Lý Đơn Hàng</h5>
+
                         </div>
                         <div class="table-responsive">
                             <table class="table table-hover table-nowrap">
-                                <div class="panel-body">
-                                    <form method="POST" action="<?php echo $action; ?>">
-                                        <div class="form-group">
-                                            <label for="name">Tên Danh Mục:</label>
-                                            <input required="true" type="text" class="form-control" id="name"
-                                                name="name"
-                                                value="<?php echo isset($record->name) ? $record->name : ""; ?>">
-                                        </div>
-                                        <hr class="navbar-divider my-3 opacity-20">
-                                        <button class="btn btn-success" onclick="addProduct()">Lưu</button>
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">Số Thứ Tự</th>
+                                        <th scope="col">Tên Khách Hàng</th>
+                                        <th scope="col">Số Điện Thoại</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Địa Chỉ</th>
+                                        <th scope="col">Trạng Thái</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
                                         <?php
-                                        $previous = "javascript:history.go(-1)";
-                                        if (isset($_SERVER['HTTP_REFERER'])) {
-                                            $previous = $_SERVER['HTTP_REFERER'];
+                                        $pg = 1;
+                                        if (isset($_GET['page'])) {
+                                            $pg = $_GET['page'];
                                         }
-                                        ?>
-                                        <a href="<?= $previous ?>" class="btn btn-warning">Back</a>
-                                    </form>
-                                </div>
+                                        echo 'Bạn đang ở trang: ' . $pg;
+                                        foreach ($listRecord as $key => $item): ?>
+                                    <tr>
+                                        <td> <?= ++$key ?></td>
+                                        <td class="text-heading font-semibold"><?= $item->fullname ?></td>
+                                        <td class="text-heading font-semibold"><?= $item->phone_number ?></td>
+                                        <td class="text-heading font-semibold"><?= $item->email ?></td>
+                                        <td class="text-heading font-semibold"><?= $item->address  ?></td>
+                                        <td class="text-heading font-semibold"><?= $item->status  ?></td>
+                                        <td>
+                                            <a
+                                                href="index.php?controller=orders&action=update&id=<?php echo $item->id; ?>">
+                                                <button class=" btn btn-success">Sửa</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                <?php endforeach; ?>
+
+                                </tr>
+
+                                </tbody>
                             </table>
+                        </div>
+
+                        <div class="card-footer border-0 py-5">
+
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <?php
+                                    for ($i = 1; $i <= $numPage; $i++) {
+                                        // Nếu là trang hiện tại thì hiển thị thẻ span
+                                        // ngược lại hiển thị thẻ a
+                                        if ($i == $numPage) {
+                                            echo '
+                            <li class="page-item"><a class="page-link" href="index.php?controller=orders&page=' . $i . '">' . $i . '</a></li>';
+                                        } else {
+                                            echo '
+                            <li class="page-item"><a class="page-link" href="index.php?controller=orders&page=' . $i . '">' . $i . '</a></li>
+                                    ';
+                                        }
+                                    }
+                                    ?>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
             </main>
         </div>
     </div>
-    <script type="text/javascript">
-        function addProduct() {
-            var option = confirm('Thêm thành công')
-            if (!option) {
-                return;
-            }
-        }
-    </script>
-
 </body>
 
 </html>
