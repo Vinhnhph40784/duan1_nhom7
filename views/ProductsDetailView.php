@@ -26,23 +26,6 @@
                                 <div class="main_image" >
                                     <img src="<?='assets/images/'.$product->thumbnail ?>" alt="">
                                 </div>
-                                <div class="main_image">
-                                    <img src="<?='assets/images/'.$product->thumbnail_1 ?>" alt="">
-                                </div>
-                                <div class="main_image">
-                                    <img src="<?='assets/images/'.$product->thumbnail_2 ?>" alt="">
-                                </div>
-                            </li>
-                            <li>
-                                <div class="main_image">
-                                    <img src="<?='assets/images/'.$product->thumbnail_3 ?>" alt="">
-                                </div>
-                                <div class="main_image">
-                                    <img src="<?='assets/images/'.$product->thumbnail_4 ?>" alt="">
-                                </div>
-                                <div class="main_image">
-                                    <img src="<?='assets/images/'.$product->thumbnail_5 ?>" alt="">
-                                </div>
                             </li>
                         </div>
                         <div class="about">
@@ -108,7 +91,7 @@
         </section>
         <section class="restaurants">
         <div class="title">
-        <h1>Các sản phẩm khác tại <span class="green" style="color: #0099FF;">POLOBEE</span></h1>
+        <h1>Các sản phẩm khác tại <span class="green" style="color: #0099FF;">SHOP BEE</span></h1>
         </div>
         <div class="product-restaurants">
         <div class="row">

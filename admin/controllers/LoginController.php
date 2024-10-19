@@ -13,7 +13,7 @@
 			if (isset($_COOKIE['tendangnhap_admin']) && ($_COOKIE['matkhau_admin'])) {
 				setcookie("tendangnhap_admin", "", time() - 30 * 24 * 60 * 60, '/');
 				setcookie("matkhau_admin", "", time() - 30 * 24 * 60 * 60, '/');
-				header('Location: index.php');
+				header('Location:index.php');
 			}
 		}
 	}

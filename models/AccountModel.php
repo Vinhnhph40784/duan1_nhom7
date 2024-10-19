@@ -1,24 +1,36 @@
 <?php
 	trait AccountModel{
-		public function modelRegister(){
-			$conn = Connection::getInstance();
-			if(isset($_POST['dangky'])) {
-				$fullname= $_POST['hovaten'];
-				$tendangnhap  = $_POST['tendangnhap'];
-				$email = $_POST['email'];
-				$diachi = $_POST['diachi'];
-				$matkhau = $_POST['matkhau'];
-				$dienthoai = $_POST['dienthoai'];
-				$query = $conn->prepare("insert into user set fullname=:var_fullname,tendangnhap=:var_tendangnhap,email=:var_email,diachi=:var_diachi,matkhau=:var_matkhau,dienthoai=:var_dienthoai");
-				$query->execute(array("var_fullname"=>$fullname,"var_tendangnhap"=>$tendangnhap,"var_email"=>$email,"var_diachi"=>$diachi,"var_matkhau"=>$matkhau,"var_dienthoai"=>$dienthoai));
-				if($fullname!="" && $tendangnhap!="" && $email!="" && $diachi!="" && $dienthoai!="" && $matkhau!=""){
-					echo '<script>alert("Đăng ký thành công.");
+		public function modelRegister()
+	{
+		$conn = Connection::getInstance();
+		if (isset($_POST['dangky'])) {
+			$fullname = $_POST['hovaten'];
+			$tendangnhap = $_POST['tendangnhap'];
+			$email = $_POST['email'];
+			$diachi = $_POST['diachi'];
+			$matkhau = $_POST['matkhau'];
+			$dienthoai = $_POST['dienthoai'];
+
+			$query = $conn->prepare("INSERT INTO user 
+            SET fullname=:var_fullname, tendangnhap=:var_tendangnhap, email=:var_email, 
+            diachi=:var_diachi, matkhau=:var_matkhau, dienthoai=:var_dienthoai, role=:var_role");
+
+			$query->execute(array(
+				"var_fullname" => $fullname,
+				"var_tendangnhap" => $tendangnhap,
+				"var_email" => $email,
+				"var_diachi" => $diachi,
+				"var_matkhau" => $matkhau,
+				"var_dienthoai" => $dienthoai,
+				"var_role" => ""
+			));
+			if ($fullname != "" && $tendangnhap != "" && $email != "" && $diachi != "" && $dienthoai != "" && $matkhau != "") {
+				echo '<script>alert("Đăng ký thành công.");
                 	window.location.href="index.php?controller=account&action=login";
 					</script>';
-				} 
 			}
-
 		}
+	}
 		public function modelLogin(){
 			$tendangnhap = $_POST["tendangnhap"];
 			$matkhau = $_POST["matkhau"];

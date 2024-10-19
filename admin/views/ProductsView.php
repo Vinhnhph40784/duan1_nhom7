@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Sản Phẩm</title>
     <style>
-    @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
-    /* Bootstrap Icons */
-    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+        @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+        /* Bootstrap Icons */
+        @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
     </style>
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
@@ -40,7 +40,7 @@
                 <!-- Brand -->
                 <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
                     <h3 class="text-success"><img src="../assets/images/logo.jpg" width="40"><span
-                            class="text-info">POLOBEE</span>STORE</h3>
+                            class="text-info">SHOP BEE</span>STORE</h3>
                 </a>
 
                 <!-- Divider -->
@@ -73,7 +73,12 @@
                                 <i class="bi bi-bag-heart"></i>Quản Lý Danh Mục
                             </a>
                         </li>
-
+                        <hr class="navbar-divider my-3 opacity-20">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?controller=collections">
+                                <i class="bi bi-collection"></i>Quản Lý Thương Hiệu
+                            </a>
+                        </li>
 
                     </ul>
                     <!-- Divider -->
@@ -108,7 +113,7 @@
                             <div class="col-sm-6 col-12 mb-4 mb-sm-0">
                                 <!-- Title -->
                                 <h1 class="h2 mb-0 ls-tight">
-                                    <img src="../assets/images/logo.jpg" width="60"> POLOBEE Store
+                                    <img src="../assets/images/logo.jpg" width="60"> SHOP BEE Store
                                 </h1>
                             </div>
 
@@ -129,7 +134,11 @@
                                         <div class="col">
                                             <span class="h6 font-semibold text-muted text-sm d-block mb-2">Sản
                                                 Phẩm</span>
-
+                                            <span class="h3 font-bold mb-0">
+                                                <?php
+                                                echo '<span>' . $this->modelTotal() . '</span>';
+                                                ?>
+                                            </span>
 
                                         </div>
                                         <div class="col-auto">
@@ -149,7 +158,11 @@
                                         <div class="col">
                                             <span class="h6 font-semibold text-muted text-sm d-block mb-2">Khách
                                                 Hàng</span>
-
+                                            <span class="h3 font-bold mb-0">
+                                                <?php
+                                                echo '<span>' . count($this->modelFeatureUser()) . '</span>';
+                                                ?>
+                                            </span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -168,7 +181,11 @@
                                         <div class="col">
                                             <span class="h6 font-semibold text-muted text-sm d-block mb-2">Đơn
                                                 Hàng</span>
-
+                                            <span class="h3 font-bold mb-0">
+                                                <?php
+                                                echo '<span>' . count($this->modelFeatureOrderDetail()) . '</span>';
+                                                ?>
+                                            </span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -187,7 +204,11 @@
                                         <div class="col">
                                             <span class="h6 font-semibold text-muted text-sm d-block mb-2">Danh
                                                 Mục</span>
-
+                                            <span class="h3 font-bold mb-0">
+                                                <?php
+                                                echo '<span>' . count($this->modelGetCategories()) . '</span>';
+                                                ?>
+                                            </span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
@@ -227,7 +248,6 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-
                                 <tbody>
                                     <tr>
                                         <?php
@@ -236,8 +256,6 @@
                                         if (isset($_GET['page'])) {
                                             $pg = $_GET['page'];
                                         }
-                                        echo 'Bạn đang ở trang: ' . $pg;
-
                                         foreach ($data as $key => $item) : ?>
                                     <tr>
                                         <td><?= ++$key ?></td>
@@ -250,12 +268,10 @@
                                         <td class="text-heading font-semibold"><?= $item->collection_name ?></td>
                                         <td><?= $item->number ?></td>
                                         <td><?= number_format($item->price, 0, ',', '.') ?> VNĐ</td>
-
                                         <td style="max-width: 150px;
                                                 overflow: hidden;
                                                 text-overflow: ellipsis;
                                                 white-space: nowrap;"> <?= $item->content ?></td>
-
                                         <td>
                                             <a
                                                 href="index.php?controller=products&action=update&id=<?php echo $item->id; ?>">
@@ -269,9 +285,9 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    <?php endforeach; ?>
+                                <?php endforeach; ?>
 
-                                    </tr>
+                                </tr>
 
                                 </tbody>
                             </table>
@@ -303,5 +319,4 @@
         </div>
     </div>
 </body>
-
 </html>

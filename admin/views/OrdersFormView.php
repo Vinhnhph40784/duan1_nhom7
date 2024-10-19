@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cập nhật đơn hàng</title>
     <style>
-    @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
-    /* Bootstrap Icons */
-    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+        @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+        /* Bootstrap Icons */
+        @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
     </style>
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
@@ -40,7 +40,7 @@
                 <!-- Brand -->
                 <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
                     <h3 class="text-success"><img src="../assets/images/logo.jpg" width="40"><span
-                            class="text-info">POLOBEE</span>STORE</h3>
+                            class="text-info">SHOP BEE</span>STORE</h3>
                 </a>
 
                 <!-- Divider -->
@@ -75,7 +75,12 @@
                                 <i class="bi bi-bag-heart"></i>Quản Lý Danh Mục
                             </a>
                         </li>
-
+                        <hr class="navbar-divider my-3 opacity-20">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?controller=collections">
+                                <i class="bi bi-collection"></i>Quản Lý Thương Hiệu
+                            </a>
+                        </li>
                     </ul>
                     <!-- Divider -->
                     <hr class="navbar-divider my-18 opacity-20">
@@ -109,7 +114,7 @@
                             <div class="col-sm-6 col-12 mb-4 mb-sm-0">
                                 <!-- Title -->
                                 <h1 class="h2 mb-0 ls-tight">
-                                    <img src="../assets/images/logo.jpg" width="60"> POLOBEE Store
+                                    <img src="../assets/images/logo.jpg" width="60"> SHOP BEE Store
                                 </h1>
                             </div>
 
@@ -252,62 +257,62 @@
                                 <table class="table table-hover table-nowrap">
                                     <tbody>
                                         <?php foreach ($groupedRecords as $customer) { ?>
-                                        <tr>
-                                            <td class="text-heading font-semibold">Tên Khách Hàng</td>
-                                            <td><?php echo htmlspecialchars($customer['fullname']); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-heading font-semibold">Số Điện Thoại</td>
-                                            <td><?php echo htmlspecialchars($customer['phone_number']); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-heading font-semibold">Địa Chỉ</td>
-                                            <td><?php echo htmlspecialchars($customer['address']); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-heading font-semibold">Trạng Thái</td>
-                                            <td>
-                                                <select class="form-control" name="status" id="status"
-                                                    onchange="updateStatus([<?php echo implode(',', $customer['orders']); ?>])">
-                                                    <?php if ($customer['status'] == 'Đang chờ xác nhận') { ?>
-                                                    <option value="Đang chờ xác nhận"
-                                                        <?php echo $customer['status'] == 'Đang chờ xác nhận' ? 'selected' : ''; ?>>
-                                                        Đang chờ xác nhận</option>
-                                                    <option value="Đã xác nhận">Đã xác nhận</option>
-                                                    <option value="Đã hủy">Đã hủy</option>
-                                                    <?php } elseif ($customer['status'] == 'Đã xác nhận') { ?>
-                                                    <option value="Đã xác nhận"
-                                                        <?php echo $customer['status'] == 'Đã xác nhận' ? 'selected' : ''; ?>>
-                                                        Đã xác nhận</option>
-                                                    <option value="Đang giao">Đang giao</option>
-                                                    <?php } elseif ($customer['status'] == 'Đang giao') { ?>
-                                                    <option value="Đang giao"
-                                                        <?php echo $customer['status'] == 'Đang giao' ? 'selected' : ''; ?>>
-                                                        Đang giao</option>
-                                                    <option value="Giao hàng thành công">Giao hàng thành công</option>
-                                                    <option value="Giao hàng thất bại">Giao hàng thất bại</option>
-                                                    <?php } elseif ($customer['status'] == 'Đã hủy') { ?>
-                                                    <option value="Đã hủy" selected disabled>Đã hủy</option>
-                                                    <?php } elseif ($customer['status'] == 'Giao hàng thành công') { ?>
-                                                    <option value="Giao hàng thành công" selected disabled>Giao hàng
-                                                        thành công</option>
-                                                    <?php } elseif ($customer['status'] == 'Giao hàng thất bại') { ?>
-                                                    <option value="Giao hàng thất bại" selected disabled>Giao hàng thất
-                                                        bại</option>
-                                                    <?php } ?>
-                                                </select>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td class="text-heading font-semibold">Tên Khách Hàng</td>
+                                                <td><?php echo htmlspecialchars($customer['fullname']); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-heading font-semibold">Số Điện Thoại</td>
+                                                <td><?php echo htmlspecialchars($customer['phone_number']); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-heading font-semibold">Địa Chỉ</td>
+                                                <td><?php echo htmlspecialchars($customer['address']); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-heading font-semibold">Trạng Thái</td>
+                                                <td>
+                                                    <select class="form-control" name="status" id="status"
+                                                        onchange="updateStatus([<?php echo implode(',', $customer['orders']); ?>])">
+                                                        <?php if ($customer['status'] == 'Đang chờ xác nhận') { ?>
+                                                            <option value="Đang chờ xác nhận"
+                                                                <?php echo $customer['status'] == 'Đang chờ xác nhận' ? 'selected' : ''; ?>>
+                                                                Đang chờ xác nhận</option>
+                                                            <option value="Đã xác nhận">Đã xác nhận</option>
+                                                            <option value="Đã hủy">Đã hủy</option>
+                                                        <?php } elseif ($customer['status'] == 'Đã xác nhận') { ?>
+                                                            <option value="Đã xác nhận"
+                                                                <?php echo $customer['status'] == 'Đã xác nhận' ? 'selected' : ''; ?>>
+                                                                Đã xác nhận</option>
+                                                            <option value="Đang giao">Đang giao</option>
+                                                        <?php } elseif ($customer['status'] == 'Đang giao') { ?>
+                                                            <option value="Đang giao"
+                                                                <?php echo $customer['status'] == 'Đang giao' ? 'selected' : ''; ?>>
+                                                                Đang giao</option>
+                                                            <option value="Giao hàng thành công">Giao hàng thành công</option>
+                                                            <option value="Giao hàng thất bại">Giao hàng thất bại</option>
+                                                        <?php } elseif ($customer['status'] == 'Đã hủy') { ?>
+                                                            <option value="Đã hủy" selected disabled>Đã hủy</option>
+                                                        <?php } elseif ($customer['status'] == 'Giao hàng thành công') { ?>
+                                                            <option value="Giao hàng thành công" selected disabled>Giao hàng
+                                                                thành công</option>
+                                                        <?php } elseif ($customer['status'] == 'Giao hàng thất bại') { ?>
+                                                            <option value="Giao hàng thất bại" selected disabled>Giao hàng thất
+                                                                bại</option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </td>
+                                            </tr>
 
                                         <?php } ?>
                                     </tbody>
                                 </table>
 
                                 <script>
-                                function updateStatus(orderIds) {
-                                    // JavaScript function to update the status of all orders of a customer
-                                    // You can implement the AJAX request to send the status update to your server here
-                                }
+                                    function updateStatus(orderIds) {
+                                        // JavaScript function to update the status of all orders of a customer
+                                        // You can implement the AJAX request to send the status update to your server here
+                                    }
                                 </script>
                                 <br>
                                 <br>
@@ -331,15 +336,15 @@
                                     </thead>
                                     <tbody>
                                         <?php foreach ($record as $index => $item) { ?>
-                                        <tr>
-                                            <td class="text-heading font-semibold"><?= ++$index ?></td>
-                                            <td class="text-heading font-semibold"><?= $item->title ?></td>
-                                            <td class="text-heading font-semibold">
-                                                <?= number_format($item->price, 0, ',', '.') ?> VNĐ</td>
-                                            <td class="text-heading font-semibold"><?= $item->num ?></td>
-                                            <td class="text-heading font-semibold">
-                                                <?= number_format($item->price * $item->num, 0, ',', '.') ?> VNĐ</td>
-                                        </tr>
+                                            <tr>
+                                                <td class="text-heading font-semibold"><?= ++$index ?></td>
+                                                <td class="text-heading font-semibold"><?= $item->title ?></td>
+                                                <td class="text-heading font-semibold">
+                                                    <?= number_format($item->price, 0, ',', '.') ?> VNĐ</td>
+                                                <td class="text-heading font-semibold"><?= $item->num ?></td>
+                                                <td class="text-heading font-semibold">
+                                                    <?= number_format($item->price * $item->num, 0, ',', '.') ?> VNĐ</td>
+                                            </tr>
                                         <?php } ?>
                                         <!-- Calculate Total Amount -->
                                         <tr>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard POLOBEE Store</title>
+    <title>Dashboard SHOP BEE Store</title>
     <style>
         @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
         /* Bootstrap Icons */
@@ -40,7 +40,7 @@
                 <!-- Brand -->
                 <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
                     <h3 class="text-success"><img src="../assets/images/logo.jpg" width="40"><span
-                            class="text-info">POLOBEE</span>STORE</h3>
+                            class="text-info">SHOP BEE</span>STORE</h3>
                 </a>
                 <!-- User menu (mobile) -->
                 <div class="navbar-user d-lg-none">
@@ -98,7 +98,12 @@
                                 <i class="bi bi-bag-heart"></i>Quản Lý Danh Mục
                             </a>
                         </li>
-
+                        <hr class="navbar-divider my-3 opacity-20">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?controller=collections">
+                                <i class="bi bi-collection"></i>Quản Lý Thương Hiệu
+                            </a>
+                        </li>
                     </ul>
                     <!-- Divider -->
                     <hr class="navbar-divider my-18 opacity-20">
@@ -132,7 +137,7 @@
                             <div class="col-sm-6 col-12 mb-4 mb-sm-0">
                                 <!-- Title -->
                                 <h1 class="h2 mb-0 ls-tight">
-                                    <img src="../assets/images/logo.jpg" width="60"> POLOBEE Store
+                                    <img src="../assets/images/logo.jpg" width="60"> SHOP BEE Store
                                 </h1>
                             </div>
 
@@ -271,7 +276,6 @@
                                         if (isset($_GET['page'])) {
                                             $pg = $_GET['page'];
                                         }
-                                        echo 'Bạn đang ở trang: ' . $pg;
                                         foreach ($listRecord as $key => $item): ?>
                                     <tr>
                                         <td> <?= ++$key ?></td>
