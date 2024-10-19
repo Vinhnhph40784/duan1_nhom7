@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Sản Phẩm</title>
     <style>
-    @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
-    /* Bootstrap Icons */
-    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+        @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+        /* Bootstrap Icons */
+        @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
     </style>
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
@@ -73,7 +73,12 @@
                                 <i class="bi bi-bag-heart"></i>Quản Lý Danh Mục
                             </a>
                         </li>
-
+                        <hr class="navbar-divider my-3 opacity-20">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?controller=collections">
+                                <i class="bi bi-collection"></i>Quản Lý Thương Hiệu
+                            </a>
+                        </li>
 
                     </ul>
                     <!-- Divider -->
@@ -155,8 +160,7 @@
                                                 Hàng</span>
                                             <span class="h3 font-bold mb-0">
                                                 <?php
-                                                $user = $this->modelFeatureUser();
-                                                echo '<span>' . count($user) . '</span>';
+                                                echo '<span>' . count($this->modelFeatureUser()) . '</span>';
                                                 ?>
                                             </span>
                                         </div>
@@ -179,8 +183,7 @@
                                                 Hàng</span>
                                             <span class="h3 font-bold mb-0">
                                                 <?php
-                                                $order = $this->modelFeatureOrderDetail();
-                                                echo '<span>' . count($order) . '</span>';
+                                                echo '<span>' . count($this->modelFeatureOrderDetail()) . '</span>';
                                                 ?>
                                             </span>
                                         </div>
@@ -203,8 +206,7 @@
                                                 Mục</span>
                                             <span class="h3 font-bold mb-0">
                                                 <?php
-                                                $category = $this->modelGetCategories();
-                                                echo '<span>' . count($category) . '</span>';
+                                                echo '<span>' . count($this->modelGetCategories()) . '</span>';
                                                 ?>
                                             </span>
                                         </div>
@@ -246,7 +248,6 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-
                                 <tbody>
                                     <tr>
                                         <?php
@@ -255,8 +256,6 @@
                                         if (isset($_GET['page'])) {
                                             $pg = $_GET['page'];
                                         }
-                                        echo 'Bạn đang ở trang: ' . $pg;
-
                                         foreach ($data as $key => $item) : ?>
                                     <tr>
                                         <td><?= ++$key ?></td>
@@ -269,12 +268,10 @@
                                         <td class="text-heading font-semibold"><?= $item->collection_name ?></td>
                                         <td><?= $item->number ?></td>
                                         <td><?= number_format($item->price, 0, ',', '.') ?> VNĐ</td>
-
                                         <td style="max-width: 150px;
                                                 overflow: hidden;
                                                 text-overflow: ellipsis;
                                                 white-space: nowrap;"> <?= $item->content ?></td>
-
                                         <td>
                                             <a
                                                 href="index.php?controller=products&action=update&id=<?php echo $item->id; ?>">
@@ -288,9 +285,9 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    <?php endforeach; ?>
+                                <?php endforeach; ?>
 
-                                    </tr>
+                                </tr>
 
                                 </tbody>
                             </table>
@@ -322,5 +319,4 @@
         </div>
     </div>
 </body>
-
 </html>

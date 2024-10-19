@@ -119,7 +119,7 @@ h1{/*  chỉnh ô chứa chữ H1 */
 </section>
 <body>
 
-<h2><i class="fas fa-star"></i>SHOPBee</h2>
+<h2><i class="fas fa-star"></i>SHOP Bee</h2>
 <h5>Đây không chỉ là một dự án mang tính đột phá mà còn là bước ngoặt của DirtyCoins đối với các thiết kế mang tính ứng dụng cao. Sự hợp tác này mang đến nhiều điều thú vị cho các bạn trẻ yêu thích brand và chất âm nhạc máu lửa của Lil’Wuyn cũng như các tín đồ của dòng thời trang đường phố.</h5></br>
 <div class="image">
     <img src="assets/images/Blog/Blog_2/ảnh1.1.png" />
@@ -152,14 +152,12 @@ h1{/*  chỉnh ô chứa chữ H1 */
 <ul id="list-new">
     <div class="item"><!--sản phẩm 2 -->
         <img src="assets/images/Blog/Blog_2/new2.jpg"width="345" height="345"  alt="">
-        <div class="name" >7 TIPS PHỐI ĐỒ VỚI PoloBee </div>
+        <div class="name" >7 TIPS PHỐI ĐỒ VỚI SHOP Bee </div>
         <div class="name" >THU HÚT MỌI ÁNH</div>
     </div>
     <div class="box-left" >
-         <a href="Blog_1.php"><button>Xem thêm </button><!--nút mua hàng --></a>
+         <a href="index.php?controller=blog&type=1"><button>Xem thêm </button><!--nút mua hàng --></a>
     </div>
-    <div class="box-left" >
-        <a href="Blog_3.php"><button>Xem thêm </button><!--nút mua hàng --></a>
     </div>
 </ul>
 <hr class="opacity-20">

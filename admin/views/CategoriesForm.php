@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sửa Danh Mục Sản Phẩm</title>
     <style>
-    @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
-    /* Bootstrap Icons */
-    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+        @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+        /* Bootstrap Icons */
+        @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
     </style>
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
@@ -89,15 +89,18 @@
                                 <i class="bi bi-cash-stack"></i>Quản Lý Đơn Hàng
                             </a>
                         </li>
-
-
                         <hr class="navbar-divider my-3 opacity-20">
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?controller=categories">
                                 <i class="bi bi-bag-heart"></i>Quản Lý Danh Mục
                             </a>
                         </li>
-
+                        <hr class="navbar-divider my-3 opacity-20">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?controller=collections">
+                                <i class="bi bi-collection"></i>Quản Lý Thương Hiệu
+                            </a>
+                        </li>
                     </ul>
                     <!-- Divider -->
                     <hr class="navbar-divider my-18 opacity-20">
@@ -159,7 +162,6 @@
                                                 echo '<span>' . count($product) . '</span>';
                                                 ?>
                                             </span>
-
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
@@ -277,12 +279,12 @@
         </div>
     </div>
     <script type="text/javascript">
-    function addProduct() {
-        var option = confirm('Thêm thành công')
-        if (!option) {
-            return;
+        function addProduct() {
+            var option = confirm('Thêm thành công')
+            if (!option) {
+                return;
+            }
         }
-    }
     </script>
 
 </body>

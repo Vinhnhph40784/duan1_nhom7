@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard POLOBEE Store</title>
+    <title>Dashboard SHOP BEE Store</title>
     <style>
-    @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
-    /* Bootstrap Icons */
-    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+        @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+        /* Bootstrap Icons */
+        @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
     </style>
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
@@ -74,7 +74,12 @@
                                 <i class="bi bi-bag-heart"></i>Quản Lý Danh Mục
                             </a>
                         </li>
-
+                        <hr class="navbar-divider my-3 opacity-20">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?controller=collections">
+                                <i class="bi bi-collection"></i>Quản Lý Thương Hiệu
+                            </a>
+                        </li>
                     </ul>
                     <!-- Divider -->
                     <hr class="navbar-divider my-18 opacity-20">
@@ -252,7 +257,6 @@
                                         if (isset($_GET['page'])) {
                                             $pg = $_GET['page'];
                                         }
-                                        echo 'Bạn đang ở trang: ' . $pg;
                                         foreach ($data as $key => $item): ?>
                                     <tr>
                                         <td> <?= ++$key ?></td>
@@ -269,8 +273,8 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    <?php endforeach; ?>
-                                    </tr>
+                                <?php endforeach; ?>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -300,19 +304,19 @@
         </div>
     </div>
     <script type="text/javascript">
-    function deleteCategory(id) {
-        var option = confirm('Bạn có chắc chắn muốn xoá danh mục này không?')
-        if (!option) {
-            return;
+        function deleteCategory(id) {
+            var option = confirm('Bạn có chắc chắn muốn xoá danh mục này không?')
+            if (!option) {
+                return;
+            }
+            console.log(id)
+            $.post('ajax.php', {
+                'id': id,
+                'action': 'delete'
+            }, function(data) {
+                location.reload()
+            })
         }
-        console.log(id)
-        $.post('ajax.php', {
-            'id': id,
-            'action': 'delete'
-        }, function(data) {
-            location.reload()
-        })
-    }
     </script>
 
 </body>
